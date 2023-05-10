@@ -1,0 +1,150 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+import Layout from '@/layout'
+
+Vue.use(Router)
+
+export const constantRoutes = [
+    {
+        path: '/404',
+        component: () => import('@/views/404'),
+        hidden: true
+    },
+    {
+        path: '/',
+        redirect: '/login',
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/login/index')
+    },
+    {
+        path: '/merchantLogin',
+        name: 'merchantLogin',
+        component: () => import('@/views/sale/login/index')
+    },
+    {
+        path: '/merchantRegister',
+        name: 'merchantRegister',
+        component: () => import('@/views/register/index')
+    },
+    {
+        path: '/index',
+        name: 'index',
+        component: () => import('@/views/index/index'),
+        hidden: true
+    },
+
+    {
+        path: '/tableCode',
+        name: 'tableCode',
+        component: () => import('@/views/tableCode/index')
+    },
+    //门店信息   
+    {
+        path: '/storeSetting',
+        name: 'storeSetting',
+        component: () => import('@/views/configSetting/index')
+    },
+    {
+        path: '/basicInfo',
+        name: 'basicInfo',
+        component: () => import('@/views/configSetting/basicInfo')
+    },
+    {
+        path: '/businessInfo',
+        name: 'businessInfo',
+        component: () => import('@/views/configSetting/businessInfo')
+    },
+    {
+        path: '/certification',
+        name: 'certification',
+        component: () => import('@/views/configSetting/certification')
+    },
+    {
+        path: '/decoration',
+        name: 'decoration',
+        component: () => import('@/views/configSetting/decoration')
+    },
+    {
+        path: "/managerInfo",
+        name: 'managerInfo',
+        component: () => import('@/views/configSetting/managerInfo')
+    },
+    {
+        path: "/storeInfo",
+        name: 'storeInfo',
+        component: () => import('@/views/configSetting/storeInfo')
+    }, 
+
+    {
+        path: '/orderList',
+        name: 'orderList',
+        component: () => import('@/views/order/list')
+    },
+    {
+        path: '/addDishes',
+        name: 'addDishes',
+        component: () => import('@/views/order/addDishes')
+    },
+    {
+        path: '/appointment',
+        name: 'appointment',
+        component: () => import('@/views/order/appointment')
+    },
+    {
+        path: '/orderDetail',
+        name: 'orderDetail',
+        component: () => import('@/views/order/detail')
+    },
+
+    //菜单设置
+    {
+        path: '/dishesAdd',
+        name: 'dishesAdd',
+        component: () => import('@/views/menu/dishes/add')
+    },
+    {
+        path: '/dishesList',
+        name: 'dishesList',
+        component: () => import('@/views/menu/dishes/list')
+    },
+    {
+        path: '/foodTypeAdd',
+        name: 'foodTypeAdd',
+        component: () => import('@/views/menu/foodType/add')
+    },
+    {
+        path: '/foodTypeList',
+        name: 'foodTypeList',
+        component: () => import('@/views/menu/foodType/list')
+    },
+
+]
+export const asyncRoutes = []
+
+export const sqlRoutes = JSON.parse(JSON.stringify(asyncRoutes))
+
+const createRouter = () => new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+})
+
+export const router = createRouter()
+
+export function resetRouter() {
+    const newRouter = createRouter()
+    router.matcher = newRouter.matcher // reset router
+}
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err)
+}
+export default new Router({
+    //mode: 'history', // 去掉url中的#
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  })
+  

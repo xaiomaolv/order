@@ -1,0 +1,31 @@
+<view class="page-container">
+  <image class="bg-img" src='/src/appointment/bg1.jpg'></image>
+  <view wx:if="{{!showOrder}}">
+    <view class="title-view">
+      <view class="size-20">欢迎光临</view>
+      <text>{{storeInfo.businessName}}</text>
+    </view>
+    <view class="main">
+      <view class=" card-view bg-w ">
+        <van-cell title="你好，请选择用餐人数" use-label-slot>
+          <view slot="">桌号:{{storeInfo.tableName}}</view>
+        </van-cell>
+        <view class="cell">
+          <view class="cell-col cell-title">人数:</view>
+          <van-stepper value="{{ mealNum }}" input-width="40px" bind:change="onChange" button-size="32px" />
+          <view class="clr-666 mg-lt-10" wx:if="{{storeInfo.mealFee > 0}}">餐位费<text>{{storeInfo.mealFee}}</text>元/位</view>
+        </view>
+        <view class="mg-10-15">
+          <view class="cell-btn size-18" data-type="{{2}}" data-num="{{mealNum}}" bindtap="toOrder">开始点餐</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <van-popup show="{{showTime}}" position="bottom" bind:close="onClose">
+    <van-datetime-picker value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:cancel="onCancelDate" bind:confirm="onConfirmDate" bind:input="onInput" />
+  </van-popup>
+
+  <!-- 授权 -->
+  <authorization class="authorization"></authorization>
+</view>

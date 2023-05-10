@@ -1,0 +1,79 @@
+<view class="evaluate-content">
+  <view class="flex header p20">
+    <view class="flex ac">
+      <text>您对商家/菜品满意吗？</text>
+    </view>
+  </view>
+  <view class="shopName flex ac">
+    <image src="{{imgUrl}}{{orderInfo.businessLogo}}" class="shopImg"></image>
+    <text>{{orderInfo.businessName}}</text>
+  </view>
+  <!-- 店铺评分 -->
+  <!-- <view class="center"> -->
+  <view class="cell">
+    <view>评分：</view>
+    <van-rate value="{{ evaluateStars }}" bind:change="onChange1" />
+  </view>
+
+  <view class="cell">
+    <view>输入评价：</view>
+  </view>
+
+  <view class="pd-10">
+    <textarea placeholder="说说您对商品的体验吧！您最多可输入200个字哦~" data-obj="form.content" value="{{form.content}}"
+      bindblur="bindTextAreaBlur"></textarea>
+  </view>
+
+  <!-- <view class="img-wrap">
+  <view class="txt">上传图片</view>
+  <view class="imglist">
+    <view class="item" wx:for="{{imgs}}" wx:key="item">
+      <image src="{{item}}" alt=""></image>
+      <view class='delete' bindtap='deleteImg' data-index="{{index}}">
+        <image src="../../../images/icon.png"></image>
+      </view>
+    </view>
+    <view class="last-item" wx:if="{{imgs.length >= 3 ? false : true}}" bindtap="bindUpload">
+      <text class="sign">+</text>
+    </view>
+  </view>
+</view> -->
+
+
+  <!-- 上传 -->
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title"></view>
+            <view class="weui-uploader__info"></view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <block wx:for="{{imgs}}" wx:key="item">
+                <view class="weui-uploader__file" bindtap='deleteImg' data-index="{{index}}">
+                  <image class="weui-uploader__img" src="{{imgUrl}}{{item}}" mode="aspectFill" />
+                </view>
+              </block>
+            </view>
+
+            <view wx:if="{{imgs.length < 6}}" class="weui-uploader__input-box">
+              <view class="weui-uploader__input" wx:if="{{imgs.length >= 6 ? false : true}}" bindtap="bindUpload">
+                <image src="/src/evaluate/img.png" class="weui-uploader__input_img">
+                  <text class="flex jc">{{files.length}} / 6</text>
+                </image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 底部提交 -->
+  <view class="btn-area">
+    <button class="primary" bindtap="submitEvaluate">提交评价</button>
+  </view>
+</view>

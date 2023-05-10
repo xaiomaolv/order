@@ -1,0 +1,77 @@
+/* pages/home/home.wxss */
+.container {
+  min-height: 100%;
+  padding-bottom: 10rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-size: 28rpx !important;
+  color: #484848 !important;
+  position: relative;
+}
+
+/* 多张image图片排列有空隙解决 */
+/* .img-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-box-item {
+  margin-top: -1rpx;
+  font-size: 0;
+  display: block;
+} */
+.card_name {
+  /* height: 120rpx; */
+  background: white;
+  border-radius: 20rpx;
+  margin: -75rpx 20rpx 0rpx 20rpx;
+  z-index: 99;
+}
+
+.item_image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.card_dian {
+  background-color: #FFF;
+  border-radius: 20rpx;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+  padding: 25px 5px;
+}
+
+.dian_img {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.bd-rt {
+  border-right: 1px solid #E4E6E9;
+}
+
+.card_shop {
+  height: 200rpx;
+  border-radius: 20rpx;
+  background: white;
+  margin: 0 20rpx 20rpx 20rpx;
+  padding: 20rpx 10rpx;
+}
+
+.shop_img {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.card_order {
+  background-color: #FFF;
+  border-radius: 20rpx;
+  margin: 0 20rpx 20rpx 20rpx;
+  padding: 20rpx 10rpx;
+}
+
+.di_img{
+  margin:0 20rpx;
+  border-radius: 20rpx;
+}

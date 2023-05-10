@@ -1,0 +1,178 @@
+/* pages/restaurant/restaurant.wxss */
+.top-view {
+  height: 200rpx;
+  background: #8d2230;
+  /* position: relative; */
+}
+
+.rt-btn {
+  float: right;
+  display: initial;
+}
+
+.top-card {
+  /* position: absolute;
+  top: 150rpx;
+  left: 20rpx;
+  right: 20rpx;
+  height: 200rpx; */
+  margin: -100rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.top-card .cd-tp {
+  margin: 20rpx 30rpx;
+}
+
+.medium-card {
+  margin: 20rpx;
+  margin-top: 120rpx;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  background: white;
+  text-align: center;
+}
+.box_yy {
+  height: 220rpx;
+}
+.sbox_yy {
+  height: 300rpx;
+}
+.lineheight{
+  padding-top: -10rpx;
+  line-height: 30rpx;
+}
+.item_image1 {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 10px;
+}
+
+.item_image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10px;
+}
+
+.ft-se-17 {
+  font-size: 34rpx;
+}
+
+.medium-card .remark {
+  color: rgb(184, 185, 185);
+}
+
+.food-list {
+  margin: 20rpx;
+  border-radius: 20rpx;
+  /* padding: 10rpx 10rpx 25rpx 10rpx; */
+  padding: 10rpx;
+  background: white;
+}
+
+.food-list .img {
+  border-radius: 20rpx;
+  width: 100%;
+  height: 200rpx;
+  /* padding: 10rpx; */
+}
+
+.food-list .ft_box {
+  padding: 10rpx;
+  height: 260rpx;
+  overflow: hidden;
+  /* border-radius: 20rpx; */
+}
+
+.banner {
+  height: 280rpx;
+  width: 100%;
+  display: flex;
+  display: -webkit-box;
+  flex-direction: column;
+}
+
+.banner_Item {
+  /* width: 150rpx; */
+  height: 150rpx;
+  margin-right: 10rpx;
+}
+
+.cornorMark {
+  transform: rotate(-45deg);
+  
+  z-index: 999;
+  position: absolute;
+  /* right: 0; */
+  /* top: 0; */
+  /* background: #e64340; */
+  background-image: linear-gradient(to left, #e64340, #f0b593);
+  border-top-left-radius: 10px;
+  /* border-top-right-radius: 10px; */
+  width: 80rpx;
+  /* height: 35rpx; */
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 0 10rpx;
+}
+
+/* 菜品推荐盒子 */
+.card_dz {
+  /* margin-top: 20rpx; */
+  /* border-radius: 20rpx; */
+  padding: 10rpx 10rpx;
+  /* background: white; */
+}
+
+.clr-dz {
+  color:white;
+  background:#FB9780;
+  border-radius: 20rpx;
+  width: 120rpx;
+  padding:5rpx 20rpx;
+}
+
+.fl-rt {
+  float: right;
+}
+.zanImg{
+  width: 60rpx;
+  height: 60rpx;
+}
+.wrapp {
+  position: relative;
+  overflow: hidden;
+}
+.ribbon {
+  background-color: #e06513;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  left: -70rpx;  
+  top: 14rpx;  
+  transform: rotate(-45deg);
+}
+.span1 {
+  color: #fff;
+  padding: 2rpx 80rpx;
+  display: block;
+}
+/* 送餐 */
+.item_img{
+  width: 55rpx;
+  height: 55rpx;
+}
+.item_img1{
+  width: 55rpx;
+  height: 55rpx;
+}
+.mg-10{
+  margin: 25rpx;
+}
+.mg-tp-010{
+  margin-top: -30rpx;
+}
+.line-h{
+  line-height: 40rpx;
+}

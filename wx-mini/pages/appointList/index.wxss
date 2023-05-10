@@ -1,0 +1,15 @@
+/* pages/appointList/index.wxss */
+.title {
+  display: inline;
+}
+
+.title .t-lt {
+  /* float: left; */
+  /* font-size: 1.05rem; */
+  display: inline;
+}
+
+.title .t-rt {
+  float: right;
+  display: inline;
+}

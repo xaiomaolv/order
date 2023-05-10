@@ -1,0 +1,58 @@
+/* pages/appointment/index.wxss */
+@import "../../css/icbc.wxss";
+@import "../../css/main.wxss";
+@import "../../css/icon.wxss";
+@import "../../css/project.wxss";
+@import "../../css/stylesheet.wxss";
+@import "../../css/flex.wxss";
+
+page{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.bg-img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  z-index: -999;
+}
+
+.page-container{
+  height: 100vh;
+  position: relative;
+}
+
+.main{
+  position: absolute;
+  bottom: 200rpx;
+  left:0;
+  right: 0;
+}
+
+.title-view{
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  padding-top: 40px;
+}
+
+.card-view{
+  margin-top: 200rpx;
+  margin-right:  20rpx;
+  margin-left:  20rpx;
+  padding: 20rpx 30rpx;
+  border-radius:20rpx ;
+}
+
+.cell-btn{
+  padding: 20rpx 40rpx;
+  background: #C83C3C;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  margin: 20rpx;
+  border-radius: 20rpx;
+}

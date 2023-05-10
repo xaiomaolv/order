@@ -1,0 +1,37 @@
+<view class="page-body">
+  <view class="mg-tp-10">
+    <view class="main">
+      <view class="shop-card" wx:for="{{dataList}}" wx:key="item" bindtap="bindViewTap" data-value="{{item}}">
+        <view class="bg-w flex-col pd-tb-10 pd-lr-10  flex-col-item">
+          <view class="mg-rt-10" slot="thumb" style="width:140rpx; height:140rpx;">
+            <image src="{{imgUrl}}{{item.businessLogo}}" mode="" class="imgStore"></image>
+          </view>
+          <view class="flex-1 ">
+            <view class="flex-col flex-col-item ft-size1">
+              <view class="t-lt  flex-1 ft-bd flex-col" style="font-size:16px">
+                <text class="row tx-of" style="width:200px;">{{item.businessName}}</text>
+              </view>
+              <view class="tx-rt" style="width: 110rpx;">
+                <van-tag type="primary" class="font-size2">点</van-tag>
+                <van-tag wx:if="{{item.reserveFlag == 1}}" mark type="warning">预</van-tag>
+              </view>
+            </view>
+
+
+            <view class="flex-col flex-col-item mg-tp-5 ">
+              <view class="flex-1">
+                <text class="row tx-of ft-size13" style="width: 200px;">{{item.categoryName}}</text>
+              </view>
+              <!-- <view class="tx-rt ft-size" style="width: 110rpx;"> {{item.distance}}km</view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="tx-ct main" wx:if="{{dataList.length == 0}}">
+      <view class="mg-tp-30">
+        <van-empty description="暂无收藏店铺" />
+      </view>
+    </view>
+  </view>
+</view>

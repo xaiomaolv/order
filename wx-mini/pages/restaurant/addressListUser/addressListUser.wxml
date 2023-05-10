@@ -1,0 +1,54 @@
+<!--pages/restaurant/addressList/addressList.wxml-->
+<view class="adcontent">
+  <!-- 用户地址 -->
+  <view>
+    <view class="cards" wx:for="{{addressList}}" wx:key="index">
+      <view>
+        <view class="flex-col flex-wrap" wx:if="{{storeInfo.addressListFlag == 1}}" bindtap="chooseAddress" data-value="{{item}}">
+          <view class="flex-col-20">
+            <view class="flex-col">
+              <view class="ft-se-16">{{item.userName}}</view>
+              <view class="ft-se-16  mg-lt-10">{{item.phone}}</view>
+              <view wx:if="{{item.defFlag == '1'}}" class="ft-se-12  mg-lt-10 clr-pri">当前地址</view>
+            </view>
+            <view class="clr-999">{{item.list[0]}}{{item.list[1]}}{{item.list[2]}}{{item.address}}</view>
+            <!-- <view class="bd-bt mg-tp-10"></view> -->
+          </view>
+          <view class="flex-col-4 tx-rt" bindtap="chooseAddress" data-value="{{item}}">
+            <text class="sdz">送到这</text>
+          </view>
+        </view>
+        <view class="flex-col flex-wrap" wx:else>
+          <view class="flex-col-20">
+            <view class="flex-col">
+              <view class="ft-se-16">{{item.userName}}</view>
+              <view class="ft-se-16  mg-lt-10">{{item.phone}}</view>
+              <view wx:if="{{item.defFlag == '1'}}" class="ft-se-12  mg-lt-10 clr-pri">当前地址</view>
+            </view>
+            <view class="clr-999">{{item.list[0]}}{{item.list[1]}}{{item.list[2]}}{{item.address}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="bd-bt mg-tp-10 mg-bt-10"></view>
+      <view class="flex-col clr-999">
+        <view class="flex-col-12 tx-lt">
+          <view class="flex-col" wx:if="{{item.defFlag == '0' || item.defFlag == null}}" bindtap="setAddress" data-value="{{item}}">
+            <view>
+              <van-icon name="circle" size="18" />
+            </view>
+            <view class="mg-lt-5 mg-tp-06">设为默认</view>
+          </view>
+          <text wx:if="{{item.defFlag == '1'}}">默认地址</text>
+        </view>
+        <view class="flex-col-12 tx-rt">
+          <text bindtap="editAddress" data-value="{{item}}">编辑</text>
+          <text bindtap="deleteAddress" data-value="{{item}}" class="mg-lt-20">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 底部提交 -->
+  <view class="btn-area" bindtap="addAddress">
+    <button class="primary">新增地址</button>
+  </view>
+</view>

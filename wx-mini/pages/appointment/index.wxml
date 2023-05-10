@@ -1,0 +1,55 @@
+<view class="page-container">
+  <image class="bg-img" src='/src/appointment/bg1.jpg'></image>
+  <view>
+    <view class="title-view">
+      <view class="size-20">欢迎光临</view>
+      <text>{{storeInfo.businessName}}</text>
+    </view>
+    <view class="main">
+      <view class="card-view bg-w">
+        <van-cell title="你好，请填写预约信息"></van-cell>
+        <view class="cell">
+          <view class="cell-col cell-title">用餐时间</view>
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" class="cell-col cell-input">
+            <input class="" disabled='disabled' placeholder-class="placeholder-color" placeholder="请选择用餐时间" value="{{mealTime}}">
+            </input>
+          </picker>
+        </view>
+        <view class="cell">
+          <view class="cell-col cell-title">联系电话</view>
+          <input class="cell-input" bindinput="bindKeyInput" type="number" placeholder="请输入电话号码" />
+        </view>
+        <view class="cell cell-title">
+          <view class="cell-col mg-rt-10">用餐人数:</view>
+          <van-stepper bind:change="changeNum" value="{{ mealPerson }}" input-width="40px" button-size="32px" />
+        </view>
+        <view class="cell">
+          <view class="flex-col-10 mg-rt-20">
+            <input placeholder-class="placeholder-color" bindinput="bindNameInput" placeholder="请输入姓名" value="{{userName}}"></input>
+          </view>
+          <view class="flex-col-12 tx-rt">
+            <van-radio-group value="{{ userSex }}" direction="horizontal" bind:change="sexChange">
+              <van-radio name="女士">女士</van-radio>
+              <van-radio name="先生">先生</van-radio>
+            </van-radio-group>
+          </view>
+        </view>
+        <view class="mg-10-15">
+          <view wx:if="{{showSubmit == true}}" class="cell-btn size-18" bindtap="appointment">确认</view>
+          <view wx:else class="cell-btn size-18">提交中...</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <van-popup show="{{showTime}}" position="bottom" bind:close="onClose">
+    <!-- <van-datetime-picker value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}"
+      bind:cancel="onCancelDate" bind:confirm="onConfirmDate" bind:input="onInput" />
+
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange"
+      value="{{multiIndex}}" range="{{multiArray}}">
+      <input value='{{time}}' placeholder='选择时间' />
+    </picker> -->
+    <!-- <van-picker columns="{{multiArray}}" bind:change="onChange" /> -->
+  </van-popup>
+</view>

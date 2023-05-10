@@ -1,0 +1,31 @@
+<view class="page-body">
+  <view class="s-page">
+    <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" wx:if="{{userInfo.avatarUrl}}"></image>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="/src/index/head.png" mode="cover" wx:else></image>
+      <view>
+        <text class="userinfo-nickname" wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>
+        <text class="userinfo-nickname" wx:else>微信用户</text>
+      </view>
+
+    </view>
+    <view class="info_list bg-w">
+      <!-- <view class="item" wx:for="{{userListInfo}}" wx:key="id" bindtap="openURL">
+          <image src="{{item.icon}}" mode="widthFix"  class="iconImg"></image>
+        <text class="mg-lt-30">{{item.text}}</text>
+        <text class="cuIcon-right lg text-gray inline"></text>
+      </view> -->
+      <block wx:for="{{userListInfo}}" wx:key="id">
+        <van-cell size="large" is-link data-value="{{item}}" bindtap="openURL">
+          <view slot="icon" class="cell_icon">
+            <image src="{{item.icon}}" mode="widthFix"></image>
+          </view>
+          <view slot="title">
+            {{item.text}}
+          </view>
+        </van-cell>
+      </block>
+    </view>
+  </view>
+  <authorization class="authorization"></authorization>
+</view>

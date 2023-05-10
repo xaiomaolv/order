@@ -1,0 +1,83 @@
+<view class="order-content">
+  <van-tabs active="{{ active }}" bind:click="onClick">
+    <van-tab title="全部">
+      <van-cell-group inset>
+        <view class="mg-tp-10 pd-10 bg-w bd-rd mg-bt-5" wx:for="{{allData}}" wx:key="item">
+          <van-cell use-label-slot data-id="{{item.orderId}}" bindtap="bindViewTap">
+            <view slot="title" class="mg-tp-10 title">
+              <view class="t-lt">
+                {{item.businessName}}
+              </view>
+              <view class="t-rt">
+                <span wx:if="{{item.orderType == '2'}}">
+                  <span wx:if="{{item.orderStatus == '0' || item.orderStatus == '1' || item.orderStatus == '2'}}">待处理</span>
+                </span>
+                <span wx:else>
+                  <span wx:if="{{item.orderStatus == '0'}}">待处理</span>
+                  <span wx:if="{{item.orderStatus == '1'}}">上菜中</span>
+                  <span wx:if="{{item.orderStatus == '2'}}">待支付</span>
+                </span>
+                <span wx:if="{{item.orderStatus == '50'}}">已完成</span>
+              </view>
+            </view>
+            <view slot="label">
+              <view class="mg-5">下单时间: <text class="movie-score">{{item.orderTime}}</text></view>
+              <view class="mg-5">数量： <text> {{item.productNum}} </text></view>
+              <view class="mg-5">金额:<text> {{item.orderAmountTotal}} </text></view>
+              <view class="mg-5">类型:<text> {{item.orderType == "2" ? "外送订单" : "扫码点餐"}} </text></view>
+            </view>
+          </van-cell>
+          <view class="flex-col">
+            <!-- <view class="btn-area1"  >
+              <view class="mini-btn" data-value="{{item}}" bindtap="toDraw">去抽奖</view>
+            </view>
+            <view class="btn-area" wx:if="{{item.orderStatus == '1' && item.commentType == '0'}}">
+              <view class="mini-btn"  bindtap="toEvaluate"
+                data-value="{{item}}">评价
+              </view>
+            </view> -->
+            <view class="btn-area">
+              <view class="mini-btn" wx:if="{{item.lotteryStatus == '1' && item.orderStatus == '2'}}" data-value="{{item}}" bindtap="toDraw">去抽奖</view>
+              <view class="mini-btn" wx:if="{{item.orderStatus == '50' && item.commentType == '0'}}" bindtap="toEvaluate" data-value="{{item}}">评价
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{allData.length<1}}" class="mg-tp-10">
+          <van-empty description="暂无记录" />
+        </view>
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="评价">
+      <van-cell-group inset>
+        <view class="mg-tp-10 pd-10 bg-w bd-rd mg-bt-5" wx:for="{{allData}}" wx:key="item">
+          <van-cell use-label-slot data-id="{{item.orderId}}" bindtap="bindViewComment" data-commentType="{{item.commentType}}" data-orderStatus="{{item.orderStatus}}" data-value="{{item}}">
+            <view slot="title" class="mg-tp-10 title">
+              <view class="t-lt">
+                {{item.businessName}}
+              </view>
+              <view class="t-rt">
+                <span wx:if="{{item.commentType == '0'}}">待评价</span>
+                <span wx:if="{{item.commentType == '1'}}">已评价</span>
+              </view>
+            </view>
+            <view slot="label">
+              <view class="mg-5">下单时间: <text class="movie-score">{{item.orderTime}}</text></view>
+              <view class="mg-5">数量： <text> {{item.productNum}} </text></view>
+              <view class="mg-5">金额:<text> {{item.orderAmountTotal}} </text></view>
+            </view>
+          </van-cell>
+          <view class="flex-col bg-w">
+            <view class="btn-area">
+              <view class="mini-btn" wx:if="{{item.orderStatus == '50' && item.commentType == '0'}}" bindtap="toEvaluate" data-value="{{item}}">评价
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{allData.length<1}}" class="mg-tp-10">
+          <van-empty description="暂无记录" />
+        </view>
+      </van-cell-group>
+    </van-tab>
+  </van-tabs>
+</view>

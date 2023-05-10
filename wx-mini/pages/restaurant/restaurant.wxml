@@ -1,0 +1,128 @@
+<view>
+  <view class="top-view">
+
+  </view>
+  <view class="top-card bg-w">
+    <view class="cd-tp size-20 flex-col pd-tp-10">
+      <view class="flex-col-4">
+        <image class='item_image' src="{{imgUrl}}{{storeInfo.businessLogo}}"></image>
+      </view>
+      <view class="flex-col-12 tx-jt mg-lt-10">
+        <text class="ft-se-17 ft-bd">{{storeInfo.businessName}}</text>
+      </view>
+      <view class="flex-col-8" style="margin-bottom: 30px;">
+        <van-icon wx:if="{{colleStatus == 0}}" bindtap="collect" class="rt-btn" name="star-o" size="22" bindtap="collect" />
+        <van-icon wx:if="{{colleStatus == 1}}" bindtap="collect" color="#F9CE5E" class="rt-btn" name="star" size="22" bindtap="collect" />
+      </view>
+    </view>
+    <van-cell icon="bulb-o">
+      <view slot="title">
+        <!-- <text wx:if="{{storeInfo.businessStatus == '1'}}">{{storeInfo.businessTime || ''}}</text>
+          <text wx:else>暂不营业</text> -->
+        <text>{{storeInfo.businessTime || ''}}</text>
+      </view>
+      <view bindtap="callPhone" data-phone="{{storeInfo.chargePhone}}">
+        <van-icon class="rt-btn" name="phone-o" size="18" />
+        <!-- <text class="mg-lt-5 clr-333">{{storeInfo.chargePhone}}</text> -->
+      </view>
+    </van-cell>
+    <van-cell title="{{storeInfo.address}}" icon="location-o">
+    </van-cell>
+  </view>
+  <view class="medium-card flex-col">
+    <view class="flex-col-12 bd-rt box_yy" bindtap="subscribe" data-value="{{storeInfo}}" wx:if="{{storeInfo.reserveFlag == 1}}">
+      <view class="mg-tp-10 mg-bt-5">
+        <image class='item_image1' src='/src/index/order2.png'></image>
+      </view>
+      <view wx:if="{{storeInfo.mealTime}}">
+        <view class="ft-se-20 mg-5">已预约</view>
+        <view class="remark ft-se-13">
+          <text>{{storeInfo.mealTime}} </text>
+          <view>{{storeInfo.reserveName}}</view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class="ft-se-20 mg-5">预约订位</view>
+        <view class="remark">未到店，预约点餐</view>
+      </view>
+    </view>
+    <view class="flex-col-12 box_yy" bindtap="scanner">
+      <view>
+        <image class='item_image' src='/src/index/order1.png'></image>
+      </view>
+      <view class="ft-se-20 mg-5">开始点餐</view>
+      <view class="remark">已落座，扫码点餐</view>
+    </view>
+  </view>
+  <!-- 送餐 -->
+  <!-- <view class="medium-card flex-col" wx:if="{{enableDelivery == true}}">
+    <view class="flex-col-12 bd-rt sbox_yy" wx:if="{{storeInfo.reserveFlag == 1}}">
+      <view class="flex-row">
+        <view class="flex-col mg-bt-10 line-h" bindtap="subscribe" data-value="{{storeInfo}}">
+          <view class="mg-tp-010">
+            <image class='item_img1' src='/src/index/order2.png'></image>
+          </view>
+          <view>
+            <view wx:if="{{storeInfo.mealTime}}">
+              <view class="ft-se-20 mg-10">已预约</view>
+              <view class="remark ft-se-13 lineheight">
+                <text>{{storeInfo.mealTime}} </text>
+                <view>{{storeInfo.reserveName}}</view>
+              </view>
+            </view>  
+            <view wx:else>
+              <view class="ft-se-20 mg-10">预约订位</view>
+              <view class="remark">未到店，预约点餐</view>
+            </view>
+          </view>
+        </view>
+        <view class="flex-col bd-tp line-h" bindtap="homeService" data-value="{{storeInfo}}">
+          <view class="mg-tp-010">
+            <image class='item_img' src='/src/index/sc.png'></image>
+          </view>
+          <view>
+            <view class="ft-se-20 mg-10">送餐上门</view>
+            <view class="remark">已点餐，送餐上门</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <view class="flex-col-12 sbox_yy pd-tp-20" bindtap="scanner">
+      <view>
+        <image class='item_image' src='/src/index/order1.png'></image>
+      </view>
+      <view class="ft-se-20 mg-5">开始点餐</view>
+      <view class="remark">已落座，扫码点餐</view>
+    </view>
+  </view> -->
+
+  <view class="food-list">
+    <view class="card_dz flex-col">
+      <view wx:if="{{storeInfo.children.length > 0}}" class="flex-col-2 ft-se-18 ft-bd tx-lt">
+        <image class='zanImg' src='/src/index/zan.png'></image>
+      </view>
+      <view wx:if="{{storeInfo.children.length > 0}}" class="flex-col-10 ft-se-17 ft-bd tx-lt">
+        <text class="">店长推荐</text>
+      </view>
+      <view wx:if="{{storeInfo.children.length > 0}}" class="flex-col-12 ft-se-12 tx-rt" data-value="{{storeInfo}}" bindtap="menuView">
+        <text class="clr-dz">更多菜单</text>
+      </view>
+      <view wx:else class="flex-col-24 ft-se-12 tx-rt" data-value="{{storeInfo}}" bindtap="menuView">
+        <text class="clr-dz">更多菜单</text>
+      </view>
+    </view>
+    <view class="flex-col flex-wrap wrapp">
+      <view class="flex-col-8 pd-5" wx:for="{{storeInfo.children}}" wx:key="index">
+        <view class="mg-2 bg-w bd-rd tx-ct ft_box">
+          <view class="ribbon">
+            <text class="span1">推荐</text>
+          </view>
+          <image class="img" style="border-radius: 20rpx;" wx:if="{{item.productImage}}" src="{{imgUrl}}{{item.productImage}}">
+          </image>
+          <view class="name ft-se-12" wx:if="{{item.productName}}">{{item.productName}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

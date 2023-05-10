@@ -1,0 +1,30 @@
+<view>
+  <van-cell-group inset>
+    <view class="mg-tp-10 pd-10 bg-w bd-rd" wx:for="{{appoinList}}" wx:key="item">
+      <van-cell use-label-slot data-id="{{item.orderId}}" data-item="{{item}}" bindtap="bindViewTap">
+        <view slot="title" class="mg-tp-10 title">
+          <view class="t-lt">
+            {{item.mealTime}}
+          </view>
+          <view class="t-rt">
+            <span wx:if="{{item.reserveStatus == '0'}}">待确认</span>
+            <span wx:if="{{item.reserveStatus == '1'}}">已确认</span>
+            <span wx:if="{{item.reserveStatus == '2'}}">已取消</span>
+          </view>
+        </view>
+        <view slot="label">
+          <view class="mg-5">到店时间: <text class="movie-score">{{item.mealTime}}</text></view>
+          <view class="mg-5">预约人： <text> {{item.reserveName || ''}} </text></view>
+          <view class="mg-5">联系电话:<text> {{item.userPhone}} </text></view>
+          <view class="mg-5">用餐人数:<text> {{item.mealPerson}} </text></view>
+          <!-- <view class="mg-5">是否点餐:<text> {{item.orderType == '1' ? "已点餐" : "未点餐" }} </text></view> -->
+        </view>
+      </van-cell>
+    </view>
+    <view wx:if="{{appoinList.length<1}}" class="mg-tp-10">
+      <van-empty description="暂无记录" />
+    </view>
+  </van-cell-group>
+
+
+</view>

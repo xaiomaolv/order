@@ -1,0 +1,7 @@
+/* pages/restaurant/addAddress/addAddress.wxss */
+.btn-area {
+  border-radius: 40%;
+  margin: 20rpx;
+  border-radius: 50rpx;
+  background: #C83C3C;
+}

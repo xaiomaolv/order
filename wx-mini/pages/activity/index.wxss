@@ -1,0 +1,10 @@
+/* pages/activity/index.wxss */
+@import "../../css/icbc.wxss";
+@import "../../css/main.wxss";
+@import "../../css/icon.wxss";
+@import "../../css/project.wxss";
+@import "../../css/stylesheet.wxss";
+@import "../../css/flex.wxss";
+.img{
+  height: 340rpx ;
+}

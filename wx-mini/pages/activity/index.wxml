@@ -1,0 +1,7 @@
+<view class="page-body">
+  <view wx:for="{{dataList}}" wx:key="item">
+    <view data-value="{{item}}" bindtap="handelActive">
+      <image class='img' src="{{imgUrl}}{{item.activityImage}}" mode="aspectFill" style=" width:100%; display:line-block"></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,97 @@
+.news-left , .news-right{
+  border-radius: 20rpx; 
+  height: 200rpx;  
+}
+.news-left{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: rgb(251, 247, 247);
+ font-size: 1.5rem;
+ background: rgb(221, 93, 70);
+ border-right: 2px dotted white;
+}
+
+.outdated .news-left{
+  color: rgb(105, 105, 105);
+  background: rgb(187, 186, 186);
+}
+
+.outdated .news-right{
+  border: 2px dotted rgb(105, 105, 105);
+}
+.outdated .rt-val{
+  color: rgb(105, 105, 105);
+}
+
+.outdated .btn{
+  color: rgb(105, 105, 105);
+  background: rgb(187, 186, 186);
+}
+
+.news-right{
+ padding: 20rpx;
+ display: flex;
+ align-items: center;
+ position: relative;
+ border: 2px dotted rgb(221, 93, 70);
+}
+
+.rt-val{
+  float: left;
+  color: rgba(138, 136, 17, 0.876);
+  margin-right: 100rpx;
+}
+.val-tp{
+  font-size: 1.2rem;
+}
+.rt-btn{
+  float: right;  
+}
+
+.btn{
+  padding: 10rpx 20rpx;
+  border-radius: 40rpx; 
+  text-align: center;
+  background: red;
+  color: white;
+  position: absolute;
+  right: 20rpx;
+  bottom: 60rpx;
+}
+/* tab切换 */
+.tabNav {
+	/* z-index: 4;
+  position: fixed;
+  top: 0;
+  left: 0; */
+	width: 100%;
+	height: 80rpx;
+	line-height: 80rpx;
+	background: #fff;
+	display: flex;
+	padding: 0 20rpx;
+	border-bottom: 1px solid #dedede;
+	box-sizing: border-box;
+}
+
+.tabNav>view {
+	color: #484848;
+	width: 50%;
+	text-align: center;
+}
+
+.tabNav>view:last-child {
+	margin-right: 0;
+}
+
+.tabNav>view text {
+	width: 30%;
+	height: 75rpx;
+	display: inline-block;
+}
+
+.tabNav .cur text {
+	border-bottom: 5rpx solid red;
+  color: #1b1b19;
+}

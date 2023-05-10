@@ -1,0 +1,182 @@
+<!--pages/restaurant/menuView/index.wxml-->
+<view class="page">
+  <!-- 头部 -->
+  <view class="zongFather" id='top'>
+    <view class='HZL_top'>
+      <view class="shopName">
+        <view class="row flex-col flex-wrap tx-ct">
+          <view class="flex-row flex-col-24 bg-w pd-tb-10 bd-bt">
+            <view class="flex-col flex-col-24">
+              <view class="flex-col-6 tx-lt pd-lr-10">
+                <image class="shopImg" mode="" src="{{imgUrl}}{{resCode.businessLogo}}">
+                </image>
+              </view>
+              <view class="flex-col-18 tx-rt">
+                <view class="flex-col flex-col-24">
+                  <view class="flex-col-14 tx-lt dianpu">{{resCode.businessName}}</view>
+                  <!-- <view class="flex-col-10 tx-rt pd-rt-10 li-hg-18">桌号：{{resCode.tableName}}</view> -->
+                </view>
+                <view class="flex-col flex-col-24 mg-tp-5">
+                  <view class="flex-col-24 tx-lt shuiang li-hg-20 mg-rt-10">{{resCode.address}}</view>
+                  <!-- <view class="flex-col-10 tx-rt pd-rt-10 ft-se-12">{{mealNum}}人就餐</view> -->
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 分类栏 -->
+    <view class='HZL_classify'>
+      <view wx:for='{{HZL_categories}}' wx:key='id'>
+        <view class='HZL_categories' bindtap='HZL_categories' data-index='{{index}}'>
+          <text class="{{index === HZL_swiper_ID ? 'HZL_categories_text' : 'tongyi'}}">{{item}}</text>
+          <view class="{{index == HZL_swiper_ID ? 'line' :''}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 左右滑动 -->
+  <swiper class='HZL_swiper fixed row' style='height:{{HZL_height1}}px; top:{{topHeight}}px' bindchange="HZL_swiperchange" current="{{HZL_swiper_ID}}">
+    <swiper-item wx:for='{{HZL_categories}}' wx:key='id'>
+      <view wx:if='{{index == HZL_swiper_ID}}' style='height:{{HZL_height1}}px'>
+        <!-- 菜单 -->
+        <view wx:if='{{HZL_swiper_ID == 0}}' class='HZL_menu' style='height:{{HZL_height1}}px'>
+          <!-- 左右联动 -->
+          <view class='HZL_scroll' style="height: 100%;">
+            <view class="sidebar-scroll-view custom-class">
+              <!-- left: bindscroll="onScrollLeftEvent" -->
+              <scroll-view class="scroller-left scroller-left-class" id="scroller-left" scroll-y="{{ true }}" scroll-top="{{ scrollLeftTop }}">
+                <!-- sidebar-menu -->
+                <view class="sidebar-menu">
+                  <view class="sidebar-item {{ scrollRightTop >= scrollTopList[index] && scrollRightTop < scrollTopList[index + 1] ? 'sidebar-item--selected' : '' }}" hover-class="sidebar-item--hover" hover-stay-time="50" wx:for="{{ constants }}" wx:key="index" wx:for-item="parantItem" data-index="{{ index }}" bind:tap="handleSidebarChange">
+                    <view>{{ parantItem.categoryName }}</view>
+                  </view>
+                </view>
+              </scroll-view>
+              <!-- right -->
+              <scroll-view class="scroller-right scroller-right-class" id="scroller-right" scroll-y="{{ true }}" scroll-with-animation="{{ true }}" scroll-into-view="{{ scrollLocationId }}" bindscroll="onScrollRightEvent">
+                <!-- product -->
+                <view class="product-body" style="padding-bottom:{{paddingBottom}}px;">
+                  <!-- chunk -->
+                  <view class="product-body__chunk" wx:for="{{ constants }}" wx:key="parantIndex" wx:for-item="parantItem">
+                    <!-- 锚点定位: 必须这样子 -->
+                    <view class="anchor-point" id="anchor-point-title-{{ index }}"></view>
+                    <!-- chunk-title -->
+                    <view class="product-chunk__title pd-tp-10 ft-bd">{{ parantItem.categoryName }}</view>
+
+                    <!-- product-list -->
+                    <view class="product-list pd-lr-10" id="product-chunk-list-{{ index }}">
+
+                      <view class='HZL_scroll_right_view flex-col flex-col-item {{item.soldOut !== "0" ? "test1" :""}}' wx:for="{{parantItem.children}}" wx:for-index="idx" wx:for-item="item" wx:key="idx" data-item="{{item}}">
+                        <view class="mg-rt-10" data-item="{{item}}" bindtap="lookDetail">
+                          <image class="goodimg" src='{{imgUrl}}{{item.productImage}}'></image>
+                        </view>
+                        <view class="sjopName flex-1">
+                          <view class="name" data-item="{{item}}" bindtap="lookDetail">
+                            {{item.productName}}</view>
+                          <view class="flex-col" data-item="{{item}}" bindtap="lookDetail">
+                            <view class="productDescribe flex-col-24 ft-se-12 li-hg-18 mg-bt-10">
+                              <view>{{item.productDescribe || ''}}</view>
+                            </view>
+                          </view>
+                          <view class="price flex-col">
+                            <view class="flex-col-13 flex-col" data-item="{{item}}" bindtap="lookDetail">
+                              <view class="xianjia">
+                                <text wx:if="{{item.productPercentPrice == 0}}">￥{{item.productPrice}}</text>
+                                <text wx:else>￥{{item.productPercentPrice}}</text>
+                                <text style="color:#959595">/份</text>
+                              </view>
+                              <view wx:if="{{item.productPercentPrice > 0}}" class="yuanjia">
+                                <text>￥{{item.productPrice || ''}}</text>
+                              </view>
+                            </view>
+                            <view class="flex-col-11 cartcontrol-wrap">
+                              <view wx:if="{{item.soldOut != '0'}}" style="color:red" class="ft-b tx-rt mg-rt-5">已售罄</view>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+
+        </view>
+        <!-- 评论 -->
+        <view wx:if='{{HZL_swiper_ID == 1}}' class='HZL_appraise'>
+          <scroll-view class='' scroll-with-animation="true" scroll-y="true" style="height:{{HZL_height}}px ;" scroll-top="{{HZL_leftToTop}}">
+            <view class="commont">
+              <view class="comList" wx:for="{{commont}}" wx:key="index">
+                <view class="">
+                  <view class="flex-col flex-wrap ft-se-12">
+                    <view class="flex-col-4 listLeft">
+                      <image class="myimage" src='{{item.avatar}}'></image>
+                    </view>
+                    <view class="flex-col-20">
+                      <view class="flex-col-24">
+                        <text>{{item.userName}}</text>
+                        <text class="fl-rt clr-999" style="margin-right: -15px;">{{item.commentCreateTime}}</text>
+                      </view>
+                      <view class="flex-col-24">
+                        <van-rate size="13" gutter="1" value="{{ item.star }}" readonly />
+                      </view>
+                    </view>
+                  </view>
+                  <view class="cells">
+                    <view>{{ item.content }}</view>
+                  </view>
+                  <view class="flex-col flex-wrap">
+                    <view class="flex-col-8" wx:if="{{item.commentImages.length >0}}" wx:for="{{item.commentImages}}" wx:key="index" wx:for-item="imgitem">
+                      <image class="com-img" src='{{imgUrl}}{{imgitem}}' data-src="{{imgitem}}" data-list="{{item.commentImages}}" bindtap="previewImage"></image>
+                    </view>
+                  </view>
+                </view>
+                <!-- 商家回应 -->
+                <view wx:if="{{item.replyFlag == '0'}}">
+                  <view class="pd-tp-15 ft-se-12" wx:for="{{item.children}}" wx:for-item="replay">
+                    商家回应:
+                    <text>{{replay.replyContent}}</text>
+                  </view>
+
+                </view>
+              </view>
+              <view style="color:#999999;font-size:24rpx;width:100%;text-align:center;">这是我的底线了！</view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 购物车 -->
+  <view wx:if='{{resCode.reserveFlag == 1}}' class='HZL_cat' id="bottom" style="bottom:0px">
+    <view class='HZL_cat_text btn' data-value="{{resCode}}" bindtap="gotoAppoint">预约点餐</view>
+  </view>
+  <!-- 菜品详情 -->
+  <view>
+    <van-popup show="{{showFoodList}}" round position="bottom" custom-style="height:85%" closeable close-icon="close" bind:close="onClose">
+      <view>
+        <image class="detailimg" src='{{imgUrl}}{{foodDetail.productImage}}'></image>
+      </view>
+      <view class="foods">
+        <view class="names">{{foodDetail.productName}}</view>
+        <view class="flex-col mg-bt-10">
+          <view class="flex-col-24 ft-se-12 li-hg-18">{{foodDetail.productDescribe || ''}}</view>
+        </view>
+        <view class="pricePopup">
+          <view class="xianjia">
+            <text wx:if="{{foodDetail.productPercentPrice == 0}}">￥{{foodDetail.productPrice}}</text>
+            <text wx:else>￥{{foodDetail.productPercentPrice}}</text>
+            <text style="color:#959595">/份</text>
+          </view>
+          <view wx:if="{{foodDetail.productPercentPrice > 0}}" class="yuanjia">
+            <text>￥{{foodDetail.productPrice || ''}}</text>
+          </view>
+        </view>
+      </view>
+    </van-popup>
+  </view>
+</view>

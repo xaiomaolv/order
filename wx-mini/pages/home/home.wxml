@@ -1,0 +1,95 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="img-box">
+    <image class="img-box-item" style="width:100%;height:35vh;margin:0" src="/src/home/sy.jpg"></image>
+  </view>
+  <!-- <view class="card_name">
+    <view class="flex-col">
+      <view class="flex-col-3 mg-lt-20 mg-tp-10">
+        <image class='item_image ' src="/src/home/he.png"></image>
+      </view>
+      <view class="flex-col-11 ft-se-12">
+        <text class="">中午好,你算哪块小饼干</text>
+      </view>
+      <view class="flex-col-12 flex-col">
+        <view class="flex-col-12 tx-rt">
+          <image class='mg-tp-5' style="height: 50rpx;width: 50rpx;" src="/src/home/dc.png"></image>
+        </view>
+        <view class="flex-col-12 tx-lt"><text class="ft-se-14 ft-bd" style="color: #F89D9E;">彩云点餐</text></view>
+      </view>
+    </view>
+  </view> -->
+  <view class="card_name flex-col flex-center tx-ct">
+    <view class='flex-col-3 mg-lt-20 mg-tp-10'>
+      <!-- <image class='item_image' wx:if="{{userInfo.avatarUrl}}" :src="{{userInfo.avatarUrl}}"></image> -->
+      <image class='item_image' src="/src/home/he.png"></image>
+    </view>
+    <view class='flex-col-11 tx-lt mg-tp-5 ft-se-12'>
+      <text>{{nowTime}}，</text>
+      <text wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>
+      <text wx:else>微信用户</text>
+    </view>
+    <view class="flex-col-12 flex-col">
+      <view class="flex-col-12 tx-rt">
+        <image class='mg-tp-5' style="height: 50rpx;width: 50rpx;" src="/src/home/dc.png"></image>
+      </view>
+      <view class="flex-col-12 tx-lt"><text class="ft-se-14 ft-bd" style="color: #F89D9E;">彩云点餐</text></view>
+    </view>
+  </view>
+
+  <view class="card_dian tx-ct size-12">
+    <view class="flex-col">
+      <view class="flex-col-12 bd-rt" bindtap="toScan">
+        <view class="p-title">
+          <image class='dian_img' src="/src/home/sm.png"></image>
+        </view>
+        <view class="ft-bd ft-se-18">扫码点餐</view>
+      </view>
+      <view class="flex-col-12" bindtap="toCoupon">
+        <view class="p-title">
+          <image class='dian_img' src="/src/home/quan.png"></image>
+        </view>
+        <view class="ft-bd ft-se-18">优惠券</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card_shop flex-col" bindtap="toShop">
+    <view class='flex-col-4 mg-lt-20'>
+      <image src="/src/home/shop.png" class="shop_img"></image>
+    </view>
+    <view class='flex-col-12 tx-lt'>
+      <text class="p-title ft-se-18">商家浏览</text>
+      <view class="clr-999 ft-se-12">一日三餐，今天你吃好了吗？</view>
+    </view>
+  </view>
+
+  <view class="card_order tx-ct">
+    <view class="flex-col">
+      <view class="flex-col-8" bindtap="toOrder">
+        <view class="p-title">
+          <image class='dian_img' src="/src/home/order.png"></image>
+        </view>
+        <view class="ft-bd">我的订单</view>
+      </view>
+      <view class="flex-col-8" bindtap="toRecord">
+        <view class="p-title">
+          <image class='dian_img' src="/src/home/record.png"></image>
+        </view>
+        <view class="ft-bd">预约记录</view>
+      </view>
+      <view class="flex-col-8" bindtap="toCollect">
+        <view class="p-title">
+          <image class='dian_img' src="/src/home/sc.png"></image>
+        </view>
+        <view class="ft-bd">店铺收藏</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="di_img">
+    <image style="width:100%;height:120rpx" src="/src/home/di.png"></image>
+  </view>
+
+  <authorization class="authorization"></authorization>
+</view>

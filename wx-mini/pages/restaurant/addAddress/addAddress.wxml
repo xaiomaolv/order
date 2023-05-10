@@ -1,0 +1,31 @@
+<!--pages/restaurant/addAddress/addAddress.wxml-->
+<view class="">
+  <view class="cell">
+    <view class="cell-col">收货人</view>
+    <input class="cell-col cell-input" placeholder="请输入收货人" data-obj="form.userName" value="{{form.userName}}" bindinput="inputChange"></input>
+  </view>
+  <view class="cell">
+    <view class="cell-col">所在地区</view>
+    <picker class="cell-col cell-input" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view wx:if="{{region.length>0}}">
+        {{region[0]}}{{region[1]}}{{region[2]}}
+      </view>
+      <view wx:else="" class="clr-place">
+        请选择所在地区
+      </view>
+    </picker>
+
+  </view>
+  <view class="cell">
+    <view class="cell-col">详细地址</view>
+    <input class="cell-col cell-input" placeholder="请输入详细地址" data-obj="form.address" value="{{form.address}}" bindinput="inputChange"></input>
+  </view>
+  <view class="cell">
+    <view class="cell-col">设为默认地址</view>
+    <switch class="cell-col cell-input" color="#C83C3C" checked="{{isDefault}}" bindchange="bindchange"></switch>
+  </view>
+  <!-- 底部提交 -->
+  <view class="btn-area" bindtap="addAddress">
+    <button class="primary">保存</button>
+  </view>
+</view>

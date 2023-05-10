@@ -1,0 +1,41 @@
+<wxs module="filters" src="/utils/filter.wxs"></wxs>
+<view>
+  <view>
+    <view class="bankcard card card-bg">
+      <view wx-if="{{wallet}}">
+        <view class="title"  style="position: relative;">{{T.account}}
+          <view class="more">
+            <button class="cu-btn line-white round sm" style="width:100%" bindtap="detail">{{T.detail_title}}</button>
+          </view>
+        </view>
+        <view class="money">{{filters.toFix(info.accountBalance / 100)}}</view>
+        <view class="account">
+        {{info.mediumId}}
+        </view>
+      </view>
+    </view>
+  </view>
+	<!-- <view class='nav-list'>
+		<navigator hover-class='none' class="nav-li" style="background-color:#6BA3E0;color:var(--white);" url="./charge/charge">
+			<view class="nav-title">{{T.into}}</view>
+			<view class="nav-name">{{T.money}}</view>
+			<text class='cuIcon-recharge'></text>
+		</navigator>
+		<navigator hover-class='none' class="nav-li" style="background-color:#658FDF;color:var(--white);" url='./cash/cash'>
+			<view class="nav-title">{{T.transfer}}</view>
+			<view class="nav-name">{{T.money}}</view>
+			<text class='cuIcon-vipcard'></text>
+		</navigator>
+		<navigator hover-class='none' class="nav-li" style="background-color:#6F83CA;color:var(--white);" url='./record/record'>
+			<view class="nav-title">{{T.Query}}</view>
+			<view class="nav-name">{{T.into_deatil}}</view>
+			<text class='cuIcon-form'></text>
+		</navigator>
+		<navigator hover-class='none' class="nav-li" style="background-color:#425690;color:var(--white);"  url='./transDetail/transDetail'>
+			<view class="nav-title">{{T.Query}}</view>
+			<view class="nav-name">{{T.payment_deatil}}</view>
+			<text class='cuIcon-copy'></text>
+		</navigator>
+	</view> -->
+  
+</view>

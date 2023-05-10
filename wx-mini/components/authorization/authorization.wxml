@@ -1,0 +1,29 @@
+<!--components/authorization/authorization.wxml-->
+<view>
+  <van-popup show="{{ showPopup }}" round position="bottom" custom-style="height: 50%" bind:close="onClose">
+    <view class="isLogin">
+      <view class="loginTitle">微信授权登录</view>
+      <view class="loginshopImg">
+        <view>您还未登录，请授权登录</view>
+        <view>(如未授权，可能无法正常使用该小程序)</view>
+      </view>
+      <view class="isAgary">
+        <text>•</text>
+        <view>获取你的手机号及公开信息(昵称、头像等)</view>
+      </view>
+      <view class="isLoginBtn mg-tp-10">
+        <!--手机号事件的授权必须绑定在子button按钮上-->
+        <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权登录</button> -->
+        <!-- <button bindtap="getUserProfile">授权登录</button> -->
+        <button class="{{flag?'show':'hide'}}" bindtap="getUserProfile">{{AuthorizedLogin}}</button>
+        <button class="{{flag?'hide':'show'}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">{{UserPhone}}</button>
+      </view>
+      <view class="flex-col mg-tp-15">
+        <radio class="mg-rt-10 green" checked="{{agreementChecked}}" bindtap="switchAgreement"></radio>
+        <text class="text-gray">我已阅读并同意</text>
+        <text style="color: #C83C3C;" bindtap="handleAgreement">《彩云点餐用户协议》</text>
+      </view>
+    </view>
+  </van-popup>
+  <agreement class="agreement" bind:cancel='handCancel' bind:confirm="handConfirm"></agreement>
+</view>

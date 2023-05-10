@@ -1,0 +1,251 @@
+.main{
+  margin-bottom: 160rpx;
+}
+.section-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 160rpx;
+  position: fixed;
+  bottom: -2px;
+  left: 0;
+  margin-bottom: 6rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  z-index: 99;
+}
+
+.section-bottom .btn-default {
+  color: #363636;
+  background-color: #eee;
+}
+
+.section-bottom .btn-primary {
+  color: #fdfffd;
+  background-color: #2477FB;
+}
+
+.section-bottom .checkbox-allcheck {
+  display: inline-block;
+  margin-left: 30rpx;
+  vertical-align: top;
+  font-size: 0px;
+}
+
+.section-bottom .check-all-text {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10rpx;
+  height: 23px;
+  line-height: 23px;
+  font-size: 28rpx;
+}
+
+.section-bottom .total {
+  flex: 1;
+  /* text-align: center; */
+  font-size: 40rpx;
+}
+
+.total .totalCount {
+  font-size: 28rpx;
+  display: inline-block;
+  vertical-align: middle;
+  /* text-align: left; */
+}
+
+.red {
+  color: #e4452a
+}
+
+.total .totalPrice {
+  display: inline-block;
+  font-size: 38rpx;
+  margin-left: 20rpx;
+}
+
+.total .totalCount .text {
+  color: #e4452a;
+  vertical-align: middle;
+}
+
+.total .totalPrice .am {
+  color: #e4452a;
+  font-size: 40rpx;
+  /* vertical-align: middle; */
+}
+
+.youhui {
+  color: #a7a1a1;
+  font-size: 26rpx;
+}
+
+.food-view{
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  padding: 10rpx;
+}
+/* .food-view .img{
+  border-radius: 10rpx;
+  width: 80%;
+  height:100rpx;
+} */
+.food-pic{
+  width: 112rpx;
+  height:112rpx;
+  border-radius: 10px;
+}
+.food-view .title {
+  display: inline;
+}
+
+.food-view .t-lt {
+  /* float: left; */
+  /* font-size: 1.05rem; */
+  display: inline;
+}
+
+.food-view .t-rt {
+  float: right;
+  display: inline;
+}
+
+.food-view .desc {
+  /* margin-top: 10rpx; */
+  display: inline;
+}
+
+.food-view .more{
+  text-align: center;
+  margin: 20rpx;
+}
+.food-view .total{
+  text-align: right;
+  margin: 20rpx 20rpx 0 20rpx;
+}
+.food-view .takeFee{
+  text-align: right;
+  margin: 10rpx 20rpx -20rpx 20rpx;
+}
+.pay-btnorder{
+  width: 28%;
+  background: #fff;
+  color: #c83c3c;
+  padding: 10rpx;
+  border-radius: 40rpx; 
+  text-align: center;
+  display: inline;
+  border: 1rpx solid #c83c3c;
+  font-size: 36rpx;
+}
+.pay-btn{
+  width: 28%;
+  background: #c83c3c;
+  color: #FFFFFF;
+  padding: 10rpx;
+  border-radius: 40rpx; 
+  text-align: center;
+  display: inline;
+  border: 1rpx solid rgb(236, 236, 236); 
+  color: white;
+  font-size: 36rpx;
+}
+.cell{
+  border-radius: 10px;
+	max-width: 100%;
+	background-color: #FFF;
+	padding:20rpx  30rpx 20rpx 30rpx;
+	border-bottom: 0.0625rem solid  var(--border-color);
+
+	display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-box-pack: start;
+    -webkit-box-align: center;
+
+    display: -ms-flexbox;
+    -ms-flex-wrap: nowrap;
+    -ms-flex-direction: row;
+    -ms-flex-pack: start;
+    -ms-flex-align: center;
+    -ms-flex-line-pack: center;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+.hiddenmore .more-item {
+  display: none;
+}
+ 
+.showmore .more-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.van-card {
+  width: 100%;
+  background-color: var(--card-background-color,#fafafa);
+  box-sizing: border-box;
+  color: var(--card-text-color,#323233);
+  font-size: var(--card-font-size,12px);
+  padding: var(--card-padding,8px 16px);
+  position: relative;
+}
+.weui-cell {
+  padding: 10px 10px 0 10px !important;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.shuiang {
+  font-size: 14px;
+  font-family: PingFang SC;
+  /* font-weight:bold; */
+  color: rgba(149, 149, 149, 1);
+}
+.shopImg {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 26rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.dianpu {
+  font-size: 17px;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(58, 58, 58, 1);
+}
+.ft-se-13{
+  font-size: 26rpx;
+}
+/* 箭头 */
+.arrow-up {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #999;
+  border-right: 4rpx solid #999;
+  margin-left: 56%;
+  transform:translateY(-130%) rotate(-45deg);
+}
+
+.arrow-down {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #999;
+  border-right: 4rpx solid #999;
+  margin-left: 60%;
+  transform: translateY(-180%) rotate(135deg);
+}
+

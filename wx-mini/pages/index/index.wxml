@@ -1,0 +1,109 @@
+<page-meta page-style="{{ pagshow ? 'overflow: hidden;' : '' }}" />
+<view class="page-body " style="padding-top:{{topHeight}}px;">
+  <view class="fixed-top row" id="top" style="z-index: 111;">
+    <view class="header bg-w">
+      <view class="top-map" bindtap="clickMap">
+        <van-icon name="location-o" class="ft-se-16" />{{address}}
+      </view>
+    </view>
+    <!-- 搜索 -->
+    <view class="seach flex-col pd-lr-10 bg-w">
+      <view class="flex-col row " style="flex:1;  border-radius: 38px;background: #eee;">
+        <input class="seach-input" type="text" style="height:70rpx" data-obj="searchVal" value="{{searchVal}}" bindfocus="inputFocus" bindinput="inputChange" placeholder="请输入搜索关键词" />
+        <view class="seach-btn" style="height:70rpx;" bindtap="handelSeach">搜索</view>
+      </view>
+      <view class="flex-col" wx:if="{{show}}">
+        <view class="seach-btn" style="height:70rpx; color:#484848;" bindtap="handelCancel">取消</view>
+      </view>
+    </view>
+    <view class="flex-col" style="min-width:100rpx; position: relative;">
+      <van-dropdown-menu class="topnav" active-color="#C83C3C">
+        <van-dropdown-item value="{{ defaultSort }}" options="{{ option1 }}" bind:change="changeRange" bind:open="handleOpen" bind:close="handleClose" />
+        <van-dropdown-item id="item" title="{{categoryName}}" style="margin-left:5px;" bind:open="handleOpen" bind:close="handleClose">
+          <van-tree-select items="{{ option }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
+          <view class="flex-col mg-tp-10 pd-bt-10 ">
+            <view class="flex-col-12 ">
+              <view class="pd-lr-10">
+                <van-button type="default" size="normal" color="var(--primary-color)" custom-class="w-95" block round bind:click="onReset">全部美食</van-button>
+              </view>
+            </view>
+            <view class="flex-col-12 ">
+              <view class="pd-lr-10">
+                <van-button type="danger" color="var(--primary-color)" size="normal" custom-class="w-95" block round bind:click="onConfirm"> 确认 </van-button>
+              </view>
+            </view>
+          </view>
+
+        </van-dropdown-item>
+        <van-dropdown-item title="{{sxName}}" id="sxitem" bind:open="handleOpen" bind:close="handleClose">
+          <view class="flex-col">
+            <view class="flex-col-12 pd-lr-10" data-index="{{item.id}}" wx:for="{{screenList}}" wx:for-item="item" wx:key="id" data-item="{{item}}" wx:key="index" bindtap="sxBind">
+              <button class="primarys btn-block {{active == item.id?'choose':''}}">{{item.name}}</button>
+            </view>
+          </view>
+          <view class="flex-col mg-tp-10 pd-bt-10 ">
+            <view class="flex-col-12 ">
+              <view class="pd-lr-10">
+                <van-button color="var(--primary-color)" type="default" size="normal" custom-class="w-95" block round bind:click="onResetSx">全部</van-button>
+              </view>
+            </view>
+            <view class="flex-col-12 ">
+              <view class="pd-lr-10">
+                <van-button color="var(--primary-color)" type="danger" size="normal" custom-class="w-95" block round bind:click="onConfirmSx"> 确认 </van-button>
+              </view>
+            </view>
+
+          </view>
+        </van-dropdown-item>
+      </van-dropdown-menu>
+    </view>
+  </view>
+  <view class="bg-w pd-lr-10 pd-bt-10" wx:if="{{activityList.activityImage}}">
+     <!-- <swiper class="h100" indicator-dots="{{true}}" autoplay="false" interval="3000" duration="500">
+      <block wx:for="{{activityList.activityImages}}" wx:key="item">
+        <swiper-item class="h100">
+          <image class='bd-rd' src="{{imgUrl}}{{item.activityImage}}" mode="aspectFill" style=" width:100%; display:line-block;height:320rpx; border-radius: 20rpx;" data-item="{{item}}" bindtap="handelActive"></image>
+        </swiper-item>
+      </block>
+    </swiper>   -->
+    <view class="flex-col" bindtap="handelActive" style=" overflow: hidden;">
+      <image class='mg-5-10 bd-rd' src="{{imgUrl}}{{activityList.activityImage}}" mode="aspectFill"
+        style=" width:100%; display:line-block;height:320rpx; border-radius: 20rpx;" bindtap="handelActive"></image>
+    </view>
+  </view>
+  <view class="main">
+    <view class="shop-card" wx:for="{{storeList}}" wx:key="item" bindtap="bindViewTap" data-value="{{item}}">
+      <view class="bg-w flex-col pd-tb-10 pd-lr-10  flex-col-item">
+        <view class="mg-rt-10" slot="thumb" style="width:140rpx; height:140rpx;">
+          <image src="{{imgUrl}}{{item.businessLogo}}" mode="" class="imgStore"></image>
+        </view>
+        <view class="flex-1 ">
+          <view class="flex-col flex-col-item ft-size1">
+            <view class="t-lt  flex-1 ft-bd flex-col" style="font-size:16px">
+              <text class="row tx-of" style="width:200px;">{{item.businessName}}</text>
+            </view>
+            <view class="tx-rt" style="width: 110rpx;">
+              <van-tag type="primary" class="font-size2">点</van-tag>
+              <van-tag wx:if="{{item.reserveFlag == 1}}" mark type="warning">预</van-tag>
+            </view>
+          </view>
+
+
+          <view class="flex-col flex-col-item mg-tp-5 ">
+            <view class="flex-1">
+              <text class="row tx-of ft-size13" style="width: 200px;">{{item.categoryName}}</text>
+            </view>
+            <view class="tx-rt ft-size" style="width: 110rpx;"> {{item.distance}}km</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view wx:if="{{storeList.length<1}}" class="mg-tp-10">
+    <van-empty description="暂无记录" />
+  </view>
+
+   <!-- 授权 -->
+   <authorization class="authorization"></authorization>
+</view>

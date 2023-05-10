@@ -1,0 +1,49 @@
+<view>
+  <view class="tabNav">
+    <view wx:for="{{navTab}}" wx:key="index" data-idx="{{index}}" bindtap="currentTab"
+      class="{{currentTab==index ? 'cur' : 'tab'}}">
+      <text>{{item}}</text>
+    </view>
+  </view>
+  <view class="indate">
+    <view class="bd-rd pd-10 bg-w mg-tp-10" wx:if="{{currentTab == 0}}" wx:for="{{couponList}}">
+      <view class="flex-col flex-grow ">
+        <view class=" flex-col-6 news-left">
+          <text class="lt-val">{{item.redempLabel || ''}}</text>
+        </view>
+        <view class="news-right flex-col-18">
+          <view class="rt-val">
+            <!-- <view class="val-tp">{{item.redempCode}}</view> -->
+            <view>有效时间:{{item.effectiveTime}}</view>
+          </view>
+          <view class="rt-btn">
+            <view class="btn" bindtap="toCart">去使用</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{currentTab == 0 && couponList.length<1}}" class="mg-tp-10">
+      <van-empty description="暂无记录" />
+    </view>
+  </view>
+  <view class="outdated">
+    <view class="bd-rd pd-10 bg-w mg-tp-10" wx:if="{{currentTab == 1}}" wx:for="{{hadcouponList}}">
+      <view class="flex-col flex-grow ">
+        <view class=" flex-col-6 news-left">
+          <text class="lt-val">{{item.redempLabel || ''}}</text>
+        </view>
+        <view class="news-right flex-col-18">
+          <view class="rt-val">
+            <view>有效时间:{{item.effectiveTime}}</view>
+          </view>
+          <view class="rt-btn">
+            <view class="btn">已失效</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{currentTab == 1 && hadcouponList.length<1}}" class="mg-tp-10">
+      <van-empty description="暂无记录" />
+    </view>
+  </view>
+</view>

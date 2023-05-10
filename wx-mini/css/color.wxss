@@ -1,0 +1,20 @@
+.red{
+  border: red solid 1px;
+  background-color:red;
+  color: #FFF;
+}
+.blue{
+  border: blue solid 1px;
+  background-color:blue;
+  color: #FFF;
+}
+.icbc{
+  border: #fd7380 solid 1px;
+  background-color:#fd7380;
+  color: #FFF;
+}
+.green{
+  border: green solid 1px;
+  background-color:green;
+  color: #FFF;
+}

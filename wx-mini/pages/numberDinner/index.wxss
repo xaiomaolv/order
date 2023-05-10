@@ -1,0 +1,66 @@
+page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bg-img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  z-index: -999;
+}
+
+.page-container {
+  min-height: 100%;
+  position: relative;
+}
+
+.main {
+  position: absolute;
+  bottom: 240rpx;
+  left: 0;
+  right: 0;
+}
+
+.title-view {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  padding-top: 70px;
+}
+
+.card-view {
+  /* margin-top: 300rpx; */
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  padding: 20rpx 30rpx;
+  border-radius: 20rpx;
+}
+
+.cell-btn {
+  padding: 20rpx 40rpx;
+  background: #C83C3C;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  margin: 20rpx;
+  border-radius: 20rpx;
+}
+
+.hide {
+  border-radius: 80rpx;
+  margin: 20rpx 50rpx;
+  font-size: 35rpx;
+  display: none;
+}
+
+.show {
+  display: block;
+  border-radius: 80rpx;
+  margin: 20rpx 50rpx;
+  font-size: 35rpx;
+}

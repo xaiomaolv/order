@@ -1,0 +1,80 @@
+/* pages/order/comment/comment.wxss */
+page {
+  background-color: #FFFFFF;
+  overflow: hidden;
+  height: 100%;
+}
+
+.com-img {
+  display: block;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+}
+
+.fl-rt {
+  float: right;
+}
+
+.listLeft {
+  width: 71rpx;
+  height: 71rpx;
+  margin: 0 10rpx 0 25rpx;
+}
+
+.myimage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.input-send {
+  /* background: rgb(182, 178, 178); */
+  /* border-radius: 10px; */
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+}
+
+.pd-10-15 {
+  padding: 20rpx 30rpx;
+}
+
+.pd-tb-15 {
+  padding: 0 30rpx;
+}
+
+.bottom-d {
+  bottom: 0
+}
+
+.seach-input {
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 20rpx;
+  flex: 1;
+}
+
+.seach-btn {
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 20rpx;
+  color: var(--primary-color);
+  margin-right: 20rpx;
+}
+
+/* 分割线 */
+.fgx {
+  max-width: 100%;
+  background-color: #FFF;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  border-bottom: 0.0625rem solid var(--border-color);
+}
+
+/* 回复商家 */
+.replayB {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}

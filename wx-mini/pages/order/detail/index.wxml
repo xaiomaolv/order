@@ -1,0 +1,81 @@
+<wxs src="../../../utils/filter.wxs" module="time" />
+<view class="main">
+  <view class="food-list">
+    <van-cell link-type="navigateTo" bindtap="toAddCart">
+      <view slot="title" class="mg-tp-10 title">
+        <view class="t-lt ft-bd" style="font-size: 17px;">
+          {{orderInfo.businessName}}
+        </view>
+        <view class="t-rt" wx:if="{{orderInfo.orderStatus < 50}}">
+          <text class="clr-d51">继续加菜</text>
+          <text class="cuIcon-right lg text-gray inline"></text>
+        </view>
+      </view>
+    </van-cell>
+    <!-- 菜单 -->
+    <view class="food-view">
+      <view class="{{!showMore? 'hiddenmore' : 'showmore'}}">
+        <view class="flex-col flex-col-24" wx:for="{{orderInfo.children}}" wx:for-index="idx" wx:key="{{item.commentId}}" class="weui-cell {{idx>4 ? 'more-item' : ''}}" bindtap="toOrder">
+          <view class="flex-col-6 tx-lt pd-lr-10">
+            <image src="{{imgUrl}}{{item.productImage}}" class="food-pic" />
+          </view>
+          <view class="flex-col-12 tx-lt ft-se-13">
+            <view class="t-lt">
+              {{item.productName || ''}}
+            </view>
+            <view>
+              <text class="clr-999">{{item.attributesName || ""}} </text>
+            </view>
+            <view>
+              <text>x{{item.productNum}} </text>
+            </view>
+          </view>
+          <view class="flex-col-6 tx-rt ft-se-13">
+            <view wx:if="{{item.percentPriceAmount == 0}}">￥{{item.priceAmount}}</view>
+            <view wx:else>￥{{item.percentPriceAmount}}</view>
+            <view>
+              <text wx:if="{{item.percentPriceAmount > 0}}" class="yuanjia">{{item.priceAmount}}</text>
+            </view>
+          </view>
+        </view>
+        <block wx:if="{{orderInfo.children.length > 5}}">
+          <view wx:if="{{showMore}}" class='showSize tx-ct clr-999' bindtap='listToggle'>
+            <text class="tx-ct">收起</text>
+            <view class="arrow-up"></view>
+            <icon class="shishuofont icon-list-close"></icon>
+          </view>
+          <view wx:else class='showSize tx-ct clr-999' bindtap='listToggle'>
+            <text class="tx-ct">展开更多</text>
+            <view class="arrow-down"></view>
+          </view>
+        </block>
+      </view>
+      <view class="orderS">
+        <view wx:if="{{orderInfo.mealFee > 0 && orderInfo.orderType == '0'}}" class="">餐位费: <text>{{orderInfo.mealFee}} X {{orderInfo.diningNum}} = ￥{{orderInfo.mealFeeTotal}}</text>
+        </view>
+        <view class=""><text>订单编号：{{orderInfo.orderNo}}</text></view>
+        <view class="mg-5"><text>下单时间：{{orderInfo.orderTime}}</text></view>
+        <view class="mg-5" wx:if="{{orderInfo.payTime}}"><text>支付时间：{{time.formatDate(orderInfo.payTime)}}</text></view>
+        <view class="mg-5" wx:if="{{orderInfo.remark}}"><text>备注：{{orderInfo.remark || ''}}</text></view>
+        <view class="mg-5"><text>商家电话：{{orderInfo.businessPhone}}</text></view>
+        <view class="mg-5" wx:if="{{orderInfo.deliveryAddress}}">
+          <text>配送地址：{{orderInfo.deliveryAddress}}</text>
+        </view>
+        <view class="mg-5" wx:if="{{orderInfo.deliveryAddress}}">
+          <text>联系人：{{orderInfo.customerName}}（{{orderInfo.customerPhone}}）</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<view class='section-bottom' wx:if="{{orderInfo.orderStatus < 50}}">
+  <view class="total">
+    <view class='totalPrice'>合计：<text class="am">￥{{orderInfo.orderAmountTotal || 0}} </text>
+      <view wx:if="{{discount != 0}}" class="youhui">(共优惠<text class="red">{{orderInfo.discountPrice || 0}}</text>元)
+      </view>
+    </view>
+  </view>
+  <view class="class='btn  pay-btn mg-rt-15" bindtap="calPay" wx:if="{{orderInfo.orderType == '0'}}">联系商家付款</view>
+  <view class="class='btn  pay-btn mg-rt-15" bindtap="callPay" data-phone="{{orderInfo.businessPhone}}" wx:else>联系商家</view>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/order/comment/comment.wxml-->
+<view class="">
+  <view class="flex-col flex-wrap ft-se-12">
+    <view class="flex-col-4 listLeft">
+      <image class="myimage" src='{{commentInfo.avatar}}'></image>
+    </view>
+    <view class="flex-col-20">
+      <view class="flex-col-24">
+        <text>{{commentInfo.userName}}</text>
+        <text class="fl-rt clr-999">{{commentInfo.commentCreateTime}}</text>
+      </view>
+      <view class="flex-col-24">
+        <van-rate size="13" gutter="1" value="{{ commentInfo.star }}" readonly />
+      </view>
+    </view>
+  </view>
+  <view class="cell">
+    <view>{{ commentInfo.content }}</view>
+  </view>
+  <view class="flex-col flex-wrap">
+    <view class="flex-col-8" wx:if="{{commentInfo.commentImages.length >0}}" wx:for="{{commentInfo.commentImages}}" wx:key="index">
+      <image class="com-img" src='{{imgUrl}}{{item}}'></image>
+    </view>
+  </view>
+</view>
+<!-- 商家回应 -->
+<view wx:if="{{commentInfo.replyFlag == '0'}}">
+  <!-- <view class="fgx"></view> -->
+  <view class="pd-tb-15 mg-tp-20 ft-se-12">商家回应</view>
+  <view class="cell ft-se-12">{{ replyList.replyContent }}</view>
+</view>
+<!-- 回复商家 -->
+<!-- <view class="flex-col row replayB" style="flex:1;  border-radius: 38px;background: #eee;">
+  <input class="seach-input" type="text" style="height:70rpx" data-obj="sendVal" value="{{sendVal}}"
+    bindfocus="inputFocus" bindinput="inputChange" placeholder="说点什么吧..." />
+  <view wx:if="{{showSend}}" class="seach-btn" style="height:70rpx;" bindtap="handelSend">发布</view>
+</view> -->

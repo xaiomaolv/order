@@ -1,0 +1,35 @@
+/* pages/restaurant/addressList/addressList.wxss */
+.adcontent {
+  padding-bottom: 20rpx;
+  height: 100vh;
+}
+
+.cards {
+  margin: 20rpx 0;
+  /* border-top: #dadcdf 1px solid;
+  border-bottom: #dadcdf 1px solid; */
+  padding: 30rpx 20rpx;
+  background: white;
+}
+.sdz {
+  border: #C83C3C 1px solid;
+  padding: 5rpx 10rpx;
+  background: #C83C3C;
+  color: white;
+  border-radius: 20rpx;
+}
+
+.clr-pri {
+  color: #C83C3C;
+}
+
+.mg-tp-06 {
+  margin-top: -6rpx;
+}
+
+.btn-area {
+  border-radius: 40%;
+  margin: 20rpx;
+  border-radius: 50rpx;
+  background: #C83C3C;
+}
